@@ -1,7 +1,7 @@
 # 実行ファイルを無視
-*/a.out
+**/a.out
 
 # テストフォルダを無視
-*/test/
+**/test/
 
-*/contest.acc.json
+**/contest.acc.json
