@@ -3,5 +3,6 @@
 
 # テストフォルダを無視
 **/test/
+**/tests/
 
 **/contest.acc.json
