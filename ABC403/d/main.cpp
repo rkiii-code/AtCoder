@@ -93,29 +93,24 @@ private:
 int main(){
     cin.tie(nullptr);
     ios::sync_with_stdio(false);
-    string s ,t;
-	cin >> s >> t;
-	int n = s.size();
-	int m = t.size();
+	int n,d;
+	cin >> n >> d;
+	map<int,int> mp;
+	int tmp;
+	int max = 0;
 	rep(i,n){
-		if(s[i] == '?' || s[i] == t[i]){
-			bool check = true;
-			rep(j,m-1){
-				if(i+j+1 >= n) {
-					check = false;
-					break;
-				}
-				if(t[j+1] != s[i+j+1] && s[i+j+1] != '?'){
-					check = false;
-					break;
-				}
-			}
-			if(check){
-				cout << "Yes" << endl;
-				return 0;
-			}
+		cin >> tmp;
+		auto it = m.find(tmp);
+  		if (it != m.end()){
+			mp.insert(make_pair(tmp,1));
+		}else{
+			++mp[tmp];
 		}
+		if(max < tmp) max = tmp;
 	}
-	cout << "No" << endl;
-	return 0;
+	int m = mp.size();
+	rep(i,j){
+		
+	}
+	
 }

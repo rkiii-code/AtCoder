@@ -93,5 +93,15 @@ private:
 int main(){
     cin.tie(nullptr);
     ios::sync_with_stdio(false);
-    
+    int sum = 0;
+	int tmp;
+	int n;
+	cin >> n;
+	rep(i,n){
+		cin >> tmp;
+		if(i % 2 == 0){
+			sum += tmp;
+		}
+	}
+	cout << sum << endl;
 }
