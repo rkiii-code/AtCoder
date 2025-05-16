@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "*.csproj": "dotnetProject",
-        "ostream": "cpp"
-    }
-}
