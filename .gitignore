@@ -1,0 +1,8 @@
+# 実行ファイルを無視
+**/a.out
+
+# テストフォルダを無視
+**/test/
+**/tests/
+
+**/contest.acc.json
