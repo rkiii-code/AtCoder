@@ -93,14 +93,7 @@ private:
 int main(){
     cin.tie(nullptr);
     ios::sync_with_stdio(false);
-
-    int s;
-	cin>>s;
-	if(s>=200 && s <300){
-		cout << "Success" << endl;
-	}else{
-		cout << "Failure" <<endl;
-	}
-	return 0;
-
+	int a,b,c,d;
+	cin >> a >> b >> c >> d;
+	
 }

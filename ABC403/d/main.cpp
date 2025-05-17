@@ -90,27 +90,42 @@ private:
 	// ただし root の場合は (-1 * そのグループに属する要素数)
 	std::vector<int> m_parentsOrSize;
 };
+
+int slove(vector<int> a){
+	int n = a.size();
+	vector dp(n+1,vector<int>(2));
+	dp[0][0]  = 0;
+	dp[]
+	rep(i,n){
+
+	}
+}
 int main(){
     cin.tie(nullptr);
     ios::sync_with_stdio(false);
 	int n,d;
 	cin >> n >> d;
-	map<int,int> mp;
-	int tmp;
-	int max = 0;
+	int m = 1000001;
+	vector<int> A(m);
 	rep(i,n){
-		cin >> tmp;
-		auto it = m.find(tmp);
-  		if (it != m.end()){
-			mp.insert(make_pair(tmp,1));
-		}else{
-			++mp[tmp];
+		int a;
+		cin >> a;
+		cnt[a]++;
+	}
+
+	int ans = 0;
+	if(d==0){
+		rep(i,m){
+			if(ans != 0) ans += cnt[i]-1;
 		}
-		if(max < tmp) max = tmp;
+	}else{
+		rep(j,d){
+			vector<int> a;
+			for(int i = j; i < M ; i+d){
+				a.emplace_back(cnt[i]);
+			}
+			ans += sum;
+		}
 	}
-	int m = mp.size();
-	rep(i,j){
-		
-	}
-	
+	cout << ans << endl;
 }
