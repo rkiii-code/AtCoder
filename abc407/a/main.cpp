@@ -93,52 +93,8 @@ private:
 int main(){
     cin.tie(nullptr);
     ios::sync_with_stdio(false);
-	int n , k;
-	string s;
-    cin >> n >> k;
-	cin >> s;
-	int cnt = 0;
-	bool flag = false;
-	for(char& c : s){
-		if(c == '?' && flag){
-			c = '.';
-		}
-		if(c == 'o'){
-			cnt++;
-			flag =true;
-		}else flag = false;
-	}
-	if(k == cnt){
-		for(char c : s){
-			if(c=='?'){
-				cout << '.';
-			}else{
-				cout << c;
-			}
-		}
-		cout << endl;
-		return 0;
-	}
-	string t = s;
-	for(int i = 0; i < n ; i++){
-		if(s[i] == '?'){
-			int sum = 0;
-			while(s[i] == '?'){
-				sum++;
-				i++;
-			}
-			if(sum == 1){
-				cnt++;
-			}else if(sum%2 == 0){
-				cnt += sum/2;
-			}else{
-				cnt += (sum+1)/2;
-			}
-		}
-		if(cnt >= k){
-			cout << s << endl;
-		}
-	}
-
-
+    int a,b;
+	cin >> a >> b;
+	double tmp = (double)a/b+0.5;
+	cout <<(int)tmp<<endl;
 }

@@ -8,6 +8,7 @@
 #include <queue>
 #include <map>
 #include <string>
+#include <iomanip>
 using ll = long long;
 
 using namespace std;
@@ -90,55 +91,26 @@ private:
 	// ただし root の場合は (-1 * そのグループに属する要素数)
 	std::vector<int> m_parentsOrSize;
 };
+int subabs(int i, int j){
+	if(i > j){
+		return i-j;
+	}else{
+		return j-i;
+	}
+}
 int main(){
     cin.tie(nullptr);
     ios::sync_with_stdio(false);
-	int n , k;
-	string s;
-    cin >> n >> k;
-	cin >> s;
+    int x ,y;
+	cin >> x >> y;
 	int cnt = 0;
-	bool flag = false;
-	for(char& c : s){
-		if(c == '?' && flag){
-			c = '.';
-		}
-		if(c == 'o'){
-			cnt++;
-			flag =true;
-		}else flag = false;
-	}
-	if(k == cnt){
-		for(char c : s){
-			if(c=='?'){
-				cout << '.';
-			}else{
-				cout << c;
+	rep(i,6){
+		rep(j,6){
+			if((i+1) + (j+1) >= x || subabs(i,j)>=y){
+				cnt ++;
 			}
 		}
-		cout << endl;
-		return 0;
 	}
-	string t = s;
-	for(int i = 0; i < n ; i++){
-		if(s[i] == '?'){
-			int sum = 0;
-			while(s[i] == '?'){
-				sum++;
-				i++;
-			}
-			if(sum == 1){
-				cnt++;
-			}else if(sum%2 == 0){
-				cnt += sum/2;
-			}else{
-				cnt += (sum+1)/2;
-			}
-		}
-		if(cnt >= k){
-			cout << s << endl;
-		}
-	}
-
-
+	double ans = (double)cnt / 36;
+	cout<<setprecision(10)<<ans<<endl;
 }
