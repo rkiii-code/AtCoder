@@ -17,5 +17,5 @@ AtCoderにおいて [sun5un(私)](https://atcoder.jp/users/sun5un) が強くな�
 [ABC407-d](https://atcoder.jp/contests/abc407/tasks/abc407_d) :
 ビットを用いた全探索．ビット扱いうまくなりたい．
 
-[ABC407-c](https://atcoder.jp/contests/abc408/tasks/abc408_d) :
+[ABC407-c](https://atcoder.jp/contests/abc408/tasks/abc408_c) :
 累積和が難しい．ほかの問題もやって慣れる．
