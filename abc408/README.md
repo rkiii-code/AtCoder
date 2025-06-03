@@ -22,7 +22,7 @@ a.erase(unique(a.begin(), a.end()), a.end());
 
 ## C - Not All Covered
 
-累積和を使う問題．imos法と呼ばれるアルゴリズムがあるらしい．
+累積和を使う問題．[imos法](https://imoz.jp/algorithms/imos_method.html) と呼ばれるアルゴリズムがあるらしい．
 
 $`C_i`$は$i$番目の壁がいくつの砲台に守られているかを表す．以下のように$`C_i`$を求めると$`O(N+M)`$で求められる．
 
