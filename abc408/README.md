@@ -22,13 +22,13 @@ a.erase(unique(a.begin(), a.end()), a.end());
 
 ## C - Not All Covered
 
-累積和を使う問題．imos法と呼ばれるアルゴリズムがあるらしい．
+累積和を使う問題．[imos法](https://imoz.jp/algorithms/imos_method.html) と呼ばれるアルゴリズムがあるらしい．
 
 $`C_i`$は$i$番目の壁がいくつの砲台に守られているかを表す．以下のように$`C_i`$を求めると$`O(N+M)`$で求められる．
 
 - $`C_1`$ ~ $`C_N+1`$ を $0$ で更新する.
 - $l$ と $r$ の入力を受けて，$C_l+1$, $C_r-1$で更新する．
-- $`C_1`$ ~ $`C_N`$ までの累積和 sum を計算しながら最小値 mi をだす．$`mi = \text{min}(sum, mi)`$
+- $`C_1`$ ~ $`C_N`$ までの累積和 sum を計算しながら最小値 mi をだす．$`\text{mi} = \text{min}(\text{sum}, \text{mi})`$
 
 ## D - Flip to Gather
 
