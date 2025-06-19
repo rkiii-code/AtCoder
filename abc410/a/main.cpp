@@ -50,30 +50,37 @@ T IN(){T x;cin>>x;return (x);}
 template <class Head>
 void VT(Head head){}
 template <class Head,class Seco,class... Tail>
-void VT(Head&& head,Seco&& seco,Tail&&... tail){
+void VT(Head&& head,Seco&& seco,Tail&&... tail){ //vectorのresize
     seco.resize(head);
     VT(head,move(tail)...);
 }
 void VT2(){}
 template <class Head,class... Tail>
-void VT2(Head&& head,Tail&&... tail){
+void VT2(Head&& head,Tail&&... tail){ //vectorへの入力
   VECCIN(head);
   VT2(move(tail)...);
 }
 template <class Head>
 void VT3(Head&& head){}
 template <class Head,class Seco,class... Tail>
-void VT3(Head&& head,Seco&& seco,Tail&&... tail){
+void VT3(Head&& head,Seco&& seco,Tail&&... tail){ //vector要素の値変更
   seco[head]=IN();
   VT3(head,move(tail)...);
 }
 
 //
 int main(){
-  	init();
+  init();
 	CIN(n);
-	V<int> d(n);
-	VT2(d);
-	COUT(d.begin());
+  V<int> a(n);
+  VT2(a);
+  CIN(k);
+  int cnt = 0;
+  each(b,a){
+    if(b >= k){
+      cnt++;
+    }
+  }
+  COUT(cnt);
 	return 0;
 }

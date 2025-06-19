@@ -32,7 +32,6 @@ const ll INF=1LL << 60;
 #define rall(v) (v).rbegin(),(v).rend()
 #define SCOUT(x) cout<<(x)<<" "
 #define ENDL cout<<endl
-#define SCOUT(x) cout<<(x)<<" "
 #define COUT(x) cout<<(x)<<endl
 void CINT(){}
 template <class Head,class... Tail>
@@ -46,34 +45,55 @@ void CINT(Head&& head,Tail&&... tail){
 template <class T = ll>
 T IN(){T x;cin>>x;return (x);}
 #define VECCIN(x) for(auto&youso_: (x) )cin>>youso_
-#define VECCOUT(x) for(auto&youso_: (x) )cout<<youso_<<" ";cout<<endl
+#define VECCOUT(x) for(size_t i = 0; i < (x).size(); ++i) cout << (x)[i] << (i + 1 == (x).size() ? '\n' : ' ')
 template <class Head>
 void VT(Head head){}
 template <class Head,class Seco,class... Tail>
-void VT(Head&& head,Seco&& seco,Tail&&... tail){
+void VT(Head&& head,Seco&& seco,Tail&&... tail){ //vectorのresize
     seco.resize(head);
     VT(head,move(tail)...);
 }
 void VT2(){}
 template <class Head,class... Tail>
-void VT2(Head&& head,Tail&&... tail){
-  VECCIN(head);
-  VT2(move(tail)...);
+void VT2(Head&& head,Tail&&... tail){ //vectorへの入力
+    VECCIN(head);
+    VT2(move(tail)...);
 }
 template <class Head>
 void VT3(Head&& head){}
 template <class Head,class Seco,class... Tail>
-void VT3(Head&& head,Seco&& seco,Tail&&... tail){
+void VT3(Head&& head,Seco&& seco,Tail&&... tail){ //vector要素の値変更
   seco[head]=IN();
   VT3(head,move(tail)...);
 }
 
 //
 int main(){
-  	init();
-	CIN(n);
-	V<int> d(n);
-	VT2(d);
-	COUT(d.begin());
+  init();
+  bool flag = false;
+  CIN(n,q);
+  V<int> a(n);
+  rep(i,n){
+    a[i] = i+1;
+  }
+  ll rotate = 0;
+  rep(i,q){
+    CIN(s);
+    if (s==1){
+      LCIN(p,x);
+      p--;
+      a[p] = x;
+    }else if(s==2){
+      flag = true;
+      LCIN(p);
+      p = (p + rotate) % n;
+      COUT(a[p]+1);
+    }else{
+      LCIN(k);
+      k %= n;
+      rotate = (rotate + k) % n;
+    }
+  }
+  if(!flag) ENDL;
 	return 0;
 }

@@ -70,7 +70,7 @@ void VT3(Head&& head,Seco&& seco,Tail&&... tail){
 
 //
 int main(){
-    init();
+  init();
 	
 	return 0;
 }
