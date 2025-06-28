@@ -56,8 +56,8 @@ void VT(Head&& head,Seco&& seco,Tail&&... tail){ //vectorのresize
 void VT2(){}
 template <class Head,class... Tail>
 void VT2(Head&& head,Tail&&... tail){ //vectorへの入力
-    VECCIN(head);
-    VT2(move(tail)...);
+  VECCIN(head);
+  VT2(move(tail)...);
 }
 template <class Head>
 void VT3(Head&& head){}
@@ -67,31 +67,26 @@ void VT3(Head&& head,Seco&& seco,Tail&&... tail){ //vector要素の値変更
   VT3(head,move(tail)...);
 }
 
-//
-int main(){
-  init();
-
-  CIN(n,q);
-  V<int> a(n);
-  rep(i,n){
-    a[i] = i+1;
-  }
-  int rotate = 0;
-  rep(i,q){
-    CIN(s);
-    if (s==1){
-      LCIN(p,x);
-      p--;
-      a[(p + rotate) % n] = x;
-    }else if(s==2){
-      LCIN(p);
-      p--;
-      COUT(a[(p + rotate) % n]);
-    }else{
-      CIN(k);
-      rotate += k;
-      rotate %= n;
+bool slove(char c,string T){
+    rep(j,T.size()){
+        if(T[j] == c){
+            return true;
+        }
     }
-  }
-	return 0;
+    return false;
+}
+int main(){
+    init();
+    SCIN(S,T);
+
+    rep2(i,1,S.size()){
+        if(S[i] >= 'A' && S[i] <= 'Z'){
+            if(!slove(S[i-1],T)){
+                COUT("No");
+                return 0;
+            }
+        }
+    }
+    COUT("Yes");
+    return 0;
 }

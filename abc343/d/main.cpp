@@ -56,8 +56,8 @@ void VT(Head&& head,Seco&& seco,Tail&&... tail){ //vectorのresize
 void VT2(){}
 template <class Head,class... Tail>
 void VT2(Head&& head,Tail&&... tail){ //vectorへの入力
-    VECCIN(head);
-    VT2(move(tail)...);
+  VECCIN(head);
+  VT2(move(tail)...);
 }
 template <class Head>
 void VT3(Head&& head){}
@@ -70,28 +70,28 @@ void VT3(Head&& head,Seco&& seco,Tail&&... tail){ //vector要素の値変更
 //
 int main(){
   init();
-
-  CIN(n,q);
-  V<int> a(n);
-  rep(i,n){
-    a[i] = i+1;
-  }
-  int rotate = 0;
-  rep(i,q){
-    CIN(s);
-    if (s==1){
-      LCIN(p,x);
-      p--;
-      a[(p + rotate) % n] = x;
-    }else if(s==2){
-      LCIN(p);
-      p--;
-      COUT(a[(p + rotate) % n]);
+  CIN(N,T);
+  int ans=1;
+  map<ll,int> mp;
+  mp[0] = N;
+  V<ll> p(N);
+  rep(i,T){
+    CIN(a,b);
+    a--;
+    if(mp[p[a]] == 1){
+      mp.erase(p[a]);
+      ans--;
     }else{
-      CIN(k);
-      rotate += k;
-      rotate %= n;
+      mp[p[a]]--;
     }
+    p[a] += b;
+    if(!mp.contains(p[a])){
+      mp[p[a]] = 1;
+      ans++;
+    }else{
+      mp[p[a]]++;
+    }
+    COUT(ans);
   }
 	return 0;
 }
