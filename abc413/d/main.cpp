@@ -66,46 +66,44 @@ void VT3(Head&& head,Seco&& seco,Tail&&... tail){ //vector要素の値変更
   seco[head]=IN();
   VT3(head,move(tail)...);
 }
-int solve(set<ll> st, ll front, ll end){
-    int cnt = 1;
-    auto it1 = st.lower_bound(front);
-    auto it2 = st.upper_bound(end);
-    
-    while(it1 != it2){
-        ll current = *it1;
-        ll target = current * 2;
-        
-        auto next = st.lower_bound(target);
-        if(next == st.end()){
-            cnt++;
-            break;
+
+void slove(){
+    CIN(n);
+    V<ll> A(n);
+    VT2(A);
+    sort(A.begin(), A.end() , [&](ll a, ll b) {
+        return fabs(a) < fabs(b);
+    });
+    bool ok=true;
+    rep(i, n-2) {
+        if (A[1]*A[i+1] != A[0]*A[i+2]){
+            ok = false;
         }
-        // 2倍以上の値がない場合
-        if(next == st.end() || *next > target){
-            // 直前の値を探す
-            if(next == st.begin()){
-                return -1; // 適切な値がない
-            }
-            next--;
-            // 現在の値より大きく、targetより小さい値が必要
-            if(*next <= current || *next > target){
-                return -1; // 適切な値がない
-            }
-        }
-        
-        cnt++;
-        it1 = next; // 次のステップに進む
     }
-    
-    return cnt;
+    if(ok){
+        COUT("Yes");
+        return;
+    }
+    int pls = 0;
+    int mns = 0;
+    if(fabs(*A.begin()) == fabs(*(A.end()-1))){
+        each(a,A){
+            if (a<0) mns++;
+            else pls++;
+        }
+        if(fabs(pls-mns)<2){
+        COUT("Yes");
+        return;
+        }
+    }
+
+    COUT("No");
+    return;
+
 }
-
-
 int main(){
-    init();
-    CIN(T);
-    rep(i,T){
-        COUT(slove());
+    CIN(t);
+    rep(i,t){
+        slove();
     }
-    return 0;
 }
