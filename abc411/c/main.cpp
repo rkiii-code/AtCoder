@@ -121,7 +121,7 @@ int main(){
             }
         }
         COUT(ans);
-        l[a] = (l[a]+1) %2; //割り算遅くてゴミ
+        l[a] = (l[a]+1) %2;
     }
 	return 0;
 }

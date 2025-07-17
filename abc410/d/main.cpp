@@ -68,25 +68,42 @@ void VT3(Head&& head,Seco&& seco,Tail&&... tail){ //vector要素の値変更
 }
 
 //
-int main(){
-  init();
+struct Edge {
+  int to,W;
+}
+
+int main()  {
   CIN(n,m);
-  V<set<pi>> v(n);
+  int W = 1<<10;
+
+  VV<Edge>> g(n);
   rep(i,m){
     CIN(a,b,w);
-    a--;
-    b--;
-    v[a].insert({b,w});
+    a--;b--;
+    g[a].emplace_back(b,w);
   }
-  int now = 0;
-  VV<int> vec(n,V<int> (1024));
-  VV<bool> flag(n,V<bool>(1024,false));
-  stack<int> st;
-  st.emplace(0);
+  V<bool> visited(n*W);
+  queue<int> q;
 
-  while(!st.empty()){
-    
+  auto push = [&](int v, int x){
+    int vid = v*W+x;
+    if(visited[vid]) return;
+    visited[vid] = true;
+    q.push(vid);
   }
-
-	return 0;
+  
+  push(0,0);
+  while(q.size()){
+    int vid = q.front(); q.pop();
+    int v = vid/W, x = vid%W;
+    for (auto e : g[v]) push(e.to, x^e+w);
+  }
+  rep(x,W) {
+    if (visited[(n-1)*W+x]) {
+      cout << x << endl;
+      return 0;
+    }
+  }
+  cout << -1 << endl;
+  return 0;
 }
